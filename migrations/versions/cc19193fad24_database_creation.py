@@ -1,8 +1,8 @@
 """new db
 
-Revision ID: 1626c9c22c1e
-Revises: 
-Create Date: 2024-02-20 02:21:00.341617
+Revision ID: cc19193fad24
+Revises:
+Create Date: 2024-02-12 20:05:47.925762
 
 """
 from alembic import op
@@ -10,10 +10,10 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '1626c9c22c1e'
-down_revision = None
-branch_labels = None
-depends_on = None
+revision: str = 'cc19193fad24'
+down_revision: Union[str, None] = None
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
