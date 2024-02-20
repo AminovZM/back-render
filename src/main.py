@@ -56,7 +56,7 @@ app.include_router(router_order)
 
 origins = [
     "http://127.0.0.1:5500",
-    "https://aminov.onrender.com/",
+    "https://aminov.onrender.com",
 ]
 
 app.add_middleware(
