@@ -17,7 +17,7 @@ app = FastAPI(
 
 
 app.include_router(
-    fastapi_users.get_auth_router(auth_backend),
+    fastapi_users.get_auth_router(auth_backend, requires_verification=True),
     prefix="/auth",
     tags=["Auth"],
 )
@@ -53,20 +53,6 @@ app.include_router(router_product)
 app.include_router(router_basket)
 
 app.include_router(router_order)
-
-from fastapi import Cookie
-from fastapi.responses import JSONResponse
-
-
-@app.get("/set-cookie")
-async def set_cookie():
-    response = JSONResponse({"message": "Cookie set"})
-    response.set_cookie(key="my_cookie", value="example_value", domain="yourdomain.com", secure=True, httponly=True, samesite="None")
-    return response
-
-@app.get("/get-cookie")
-async def get_cookie(my_cookie: str = Cookie(None)):
-    return {"my_cookie": my_cookie}
 
 
 origins = [
