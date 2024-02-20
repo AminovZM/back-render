@@ -17,7 +17,7 @@ app = FastAPI(
 
 
 app.include_router(
-    fastapi_users.get_auth_router(auth_backend, requires_verification=True),
+    fastapi_users.get_auth_router(auth_backend),
     prefix="/auth",
     tags=["Auth"],
 )
@@ -65,8 +65,5 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS", "DELETE", "PATCH", "PUT"],
-    allow_headers=["Content-Type", "Set-Cookie", "Access-Control-Allow-Headers", "Access-Control-Allow-Origin",
-                   "Authorization", "Accept", "Accept-Language", "Connection", "Content-Type", "Origin", "Referer"
-                   "Sec-Fetch-Dest", "Sec-Fetch-Mode", "Sec-Fetch-Site", "User-Agent", "sec-ch-ua",
-                   "sec-ch-ua-mobile", "sec-ch-ua-platform"],
+    allow_headers=["*"],
 )
