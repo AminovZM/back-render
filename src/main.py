@@ -58,6 +58,7 @@ app.include_router(router_order)
 origins = [
     "http://127.0.0.1:5500",
     "https://aminov.onrender.com",
+    "https://aminov.onrender.com/login.html",
 ]
 
 app.add_middleware(
@@ -65,5 +66,8 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS", "DELETE", "PATCH", "PUT"],
-    allow_headers=["*"],
+    allow_headers=["Content-Type", "Set-Cookie", "Access-Control-Allow-Headers", "Access-Control-Allow-Origin",
+                   "Authorization", "Accept", "Accept-Language", "Connection", "Content-Type", "Origin", "Referer"
+                   "Sec-Fetch-Dest", "Sec-Fetch-Mode", "Sec-Fetch-Site", "User-Agent", "sec-ch-ua",
+                   "sec-ch-ua-mobile", "sec-ch-ua-platform"],
 )
