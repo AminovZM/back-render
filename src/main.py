@@ -69,5 +69,5 @@ app.add_middleware(
     allow_headers=["Content-Type", "Set-Cookie", "Access-Control-Allow-Headers", "Access-Control-Allow-Origin",
                    "Authorization", "Accept", "Accept-Language", "Connection", "Content-Type", "Origin", "Referer"
                    "Sec-Fetch-Dest", "Sec-Fetch-Mode", "Sec-Fetch-Site", "User-Agent", "sec-ch-ua",
-                   "sec-ch-ua-mobile", "sec-ch-ua-platform"],
+                   "sec-ch-ua-mobile", "sec-ch-ua-platform", "access-control-allow-credentials"],
 )
