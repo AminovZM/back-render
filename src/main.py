@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from auth.base_config import auth_backend, fastapi_users
+from auth.base_config import auth_backend, fastapi_users, current_user
 from auth.schemas import UserRead, UserCreate, UserUpdate
+from auth.manager import get_user_manager
 
 from operations.router import router as router_operation
 from products.router import router as router_product
@@ -55,10 +56,16 @@ app.include_router(router_basket)
 app.include_router(router_order)
 
 
+@app.get("/hello")
+async def get_hello():
+    return "salam"
+
+
 origins = [
     "http://127.0.0.1:5500",
     "https://aminov.onrender.com",
     "https://aminov.onrender.com/login.html",
+    "https://aminovzm.github.io/frontend/"
 ]
 
 app.add_middleware(
