@@ -66,6 +66,7 @@ origins = [
     "https://aminov.onrender.com",
     "https://aminov.onrender.com/login.html",
     "https://aminovzm.github.io/frontend",
+    "https://aminovzm.github.io",
 ]
 
 app.add_middleware(
