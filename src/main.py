@@ -65,7 +65,7 @@ origins = [
     "http://127.0.0.1:5500",
     "https://aminov.onrender.com",
     "https://aminov.onrender.com/login.html",
-    "https://aminovzm.github.io/frontend/"
+    "https://aminovzm.github.io/frontend",
 ]
 
 app.add_middleware(
