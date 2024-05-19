@@ -1,16 +1,16 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, APIRouter
 from starlette.middleware.cors import CORSMiddleware
 
 from auth.base_config import auth_backend, fastapi_users, current_user
 from auth.schemas import UserRead, UserCreate, UserUpdate
 from auth.manager import get_user_manager
+from auth.models import User
+
 
 from operations.router import router as router_operation
 from products.router import router as router_product
 from basket.router import router as router_basket
 from orders.router import router as router_order
-
-
 
 app = FastAPI(
     title="Trading App"
@@ -41,12 +41,6 @@ app.include_router(
     tags=["Auth"],
 )
 
-app.include_router(
-    fastapi_users.get_users_router(UserRead, UserUpdate),
-    prefix="/users",
-    tags=["Users"],
-)
-
 app.include_router(router_operation)
 
 app.include_router(router_product)
@@ -56,10 +50,20 @@ app.include_router(router_basket)
 app.include_router(router_order)
 
 
-@app.get("/hello")
-async def get_hello():
-    return "salam"
+router_current_user = APIRouter(
+    prefix="/current_user",
+    tags=["Users"]
+)
 
+current_user = fastapi_users.current_user()
+
+
+@router_current_user.get("/")
+def protected_route(user: User = Depends(current_user)):
+    return {"username": user.username}
+
+
+app.include_router(router_current_user)
 
 origins = [
     "https://aminovzm.github.io",
