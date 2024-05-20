@@ -41,6 +41,12 @@ app.include_router(
     tags=["Auth"],
 )
 
+app.include_router(
+    fastapi_users.get_users_router(UserRead, UserUpdate),
+    prefix="/users",
+    tags=["Users"],
+)
+
 app.include_router(router_operation)
 
 app.include_router(router_product)
@@ -50,20 +56,17 @@ app.include_router(router_basket)
 app.include_router(router_order)
 
 
-router_current_user = APIRouter(
-    prefix="/current_user",
-    tags=["Users"]
-)
+#router_current_user = APIRouter(
+#    prefix="/current_user",
+#    tags=["Users"]
+#)
 
-current_user = fastapi_users.current_user()
+#current_user = fastapi_users.current_user()
+#@router_current_user.post("/")
+#def protected_route(user: User = Depends(current_user)):
+#    return {"username": user.username}
+#app.include_router(router_current_user)
 
-
-@router_current_user.post("/")
-def protected_route(user: User = Depends(current_user)):
-    return {"username": user.username}
-
-
-app.include_router(router_current_user)
 
 origins = [
     "https://front-end-l0jy.onrender.com",
