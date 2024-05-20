@@ -58,7 +58,7 @@ router_current_user = APIRouter(
 current_user = fastapi_users.current_user()
 
 
-@router_current_user.get("/")
+@router_current_user.post("/")
 def protected_route(user: User = Depends(current_user)):
     return {"username": user.username}
 
