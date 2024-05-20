@@ -66,7 +66,7 @@ def protected_route(user: User = Depends(current_user)):
 app.include_router(router_current_user)
 
 origins = [
-    "https://front-end-l0jy.onrender.com"
+    "https://front-end-l0jy.onrender.com",
     "http://127.0.0.1:5500",
 ]
 
