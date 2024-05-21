@@ -1,19 +1,16 @@
-from fastapi import FastAPI, Depends, APIRouter
+from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from auth.base_config import auth_backend, fastapi_users, current_user
+from auth.base_config import auth_backend, fastapi_users
 from auth.schemas import UserRead, UserCreate, UserUpdate
-from auth.manager import get_user_manager
-from auth.models import User
 
 
-from operations.router import router as router_operation
 from products.router import router as router_product
 from basket.router import router as router_basket
 from orders.router import router as router_order
 
 app = FastAPI(
-    title="Trading App"
+    title="Online store"
 )
 
 
@@ -46,8 +43,6 @@ app.include_router(
     prefix="/users",
     tags=["Users"],
 )
-
-app.include_router(router_operation)
 
 app.include_router(router_product)
 
